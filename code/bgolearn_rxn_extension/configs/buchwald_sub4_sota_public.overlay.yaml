@@ -1,0 +1,28 @@
+# Public-table-optimized overlay for configs/buchwald_sub4.yaml.
+# Retain the base dataset/features/GP/interaction/runtime sections and replace
+# these two sections.
+ensemble:
+  enabled_models: [gp, interaction]
+  initial_weights:
+    gp: 0.50
+    interaction: 0.30
+    trees: 0.20
+  prequential_learning_rate: 0.15
+  minimum_weight: 0.08
+  predictive_std_floor: 2.0
+
+policy:
+  first_query: gp
+  early_end: 40
+  final_start: 41
+  challenge_every: 0
+  challenge_beta: 1.5
+  challenge_disagreement_weight: 0.75
+  challenge_gate_sigma: 1.0
+  final_beta: 0.15
+  xi_initial: 0.05
+  xi_final: 0.0
+  prior_initial_weight: 0.0
+  prior_decay: 0.30
+  novelty_disagreement_mode: off
+  novelty_disagreement_weight: 0.50

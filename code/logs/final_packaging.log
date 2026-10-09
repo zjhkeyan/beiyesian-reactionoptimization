@@ -1,0 +1,10 @@
+2026-08-15 final competition packaging
+method=optimized_gp_interaction_gp_warmstart_logei
+datasets=Buchwald_sub4,Suzuki
+official_seeds=100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000
+budget_per_run=40
+trajectory_files=40
+trajectory_records=1600
+checks=file_set,seed_identity,step_sequence,index_bounds,index_uniqueness,condition_match,best_so_far,metric_recomputation,torch_roundtrip
+validation_result=PASS
+protected_hidden_data_accessed=false

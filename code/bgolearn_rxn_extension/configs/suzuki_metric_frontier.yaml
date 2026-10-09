@@ -1,0 +1,110 @@
+dataset:
+  name: Suzuki
+  feature_columns: [Electrophile, Nucleophile, Ligand, Base, Solvent]
+  target_column: Yield
+  task_column: null
+  target_task_value: null
+  condition_roles: [Electrophile, Nucleophile, SubstratePair, Ligand, Base, Solvent]
+  derived_roles:
+    SubstratePair: [Electrophile, Nucleophile]
+  fixed_roles:
+    ProductContext: 6-(5-methyl-1-(tetrahydro-2H-pyran-2-yl)-1H-indazol-4-yl)quinoline
+  budget: 40
+  seeds: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000]
+
+features:
+  identity_scale: 1.0
+  rule_scale: 0.75
+  molecular_scale: 0.35
+  registry_path: null
+  use_name_rules: true
+  use_rdkit: true
+  morgan_radius: 2
+  morgan_bits: 256
+  missing_registry_policy: warn
+
+gp:
+  interaction_pairs:
+    - [SubstratePair, Ligand]
+    - [SubstratePair, Base]
+    - [Base, Solvent]
+    - [Ligand, Base]
+    - [Electrophile, Ligand]
+    - [Nucleophile, Base]
+  role_weights:
+    Electrophile: 0.75
+    Nucleophile: 0.75
+    SubstratePair: 1.35
+    Ligand: 1.15
+    Base: 1.0
+    Solvent: 0.75
+  interaction_weights:
+    "SubstratePair|Ligand": 1.2
+    "SubstratePair|Base": 1.0
+    "Base|Solvent": 1.0
+    "Ligand|Base": 0.8
+    "Electrophile|Ligand": 0.6
+    "Nucleophile|Base": 0.6
+  optimize_hyperparameters: true
+  restarts: 3
+  maxiter: 140
+  refit_interval: 2
+  initial_lengthscale: 1.0
+  initial_noise: 0.05
+  initial_pair_scale: 0.20
+  initial_task_rho: 0.45
+  jitter: 1.0e-8
+  target_transform: standard
+
+interaction_model:
+  interaction_pairs:
+    - [SubstratePair, Ligand]
+    - [SubstratePair, Base]
+    - [Base, Solvent]
+    - [Ligand, Base]
+    - [Electrophile, Ligand]
+    - [Nucleophile, Base]
+  role_ranks: {Electrophile: 3, Nucleophile: 4, SubstratePair: 5, Ligand: 5, Base: 4, Solvent: 3}
+  default_rank: 4
+  interaction_scale: 0.35
+  alpha_1: 1.0e-6
+  alpha_2: 1.0e-6
+  lambda_1: 1.0e-6
+  lambda_2: 1.0e-6
+  target_transform: standard
+
+trees:
+  n_estimators: 320
+  max_features: sqrt
+  min_samples_leaf: 2
+  max_depth: null
+  residual_noise_fraction: 0.35
+  target_transform: standard
+
+ensemble:
+  enabled_models: [component_ard_gp]
+  initial_weights:
+    component_ard_gp: 1.0
+  prequential_learning_rate: 0.15
+  minimum_weight: 0.08
+  predictive_std_floor: 2.0
+
+policy:
+  first_query: component_ard_gp
+  early_end: 40
+  final_start: 41
+  challenge_every: 0
+  challenge_beta: 1.5
+  challenge_disagreement_weight: 0.75
+  challenge_gate_sigma: 1.0
+  final_beta: 0.15
+  xi_initial: 0.05
+  xi_final: 0.0
+  prior_initial_weight: 0.0
+  prior_decay: 0.30
+
+runtime:
+  backend: native
+  output_dir: runs/suzuki_metric_frontier
+  save_candidate_scores: false
+  strict_reproducibility: true

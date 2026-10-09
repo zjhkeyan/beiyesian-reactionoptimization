@@ -1,0 +1,12 @@
+# Reference environment used to test the native implementation on 2026-07-23.
+# Bgolearn is an optional compatibility dependency and should be installed at 3.1.0.
+numpy==2.3.5
+pandas==2.2.3
+scipy==1.17.0
+scikit-learn==1.8.0
+PyYAML>=6.0
+joblib>=1.3
+rdkit==2025.9.4
+torch==2.10.0
+pytest>=8
+Bgolearn==3.1.0

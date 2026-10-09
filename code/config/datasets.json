@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "datasets": {
+    "Suzuki": {
+      "directory": "Suzuki",
+      "metadata": "metadata.json",
+      "options": "options.json",
+      "train": "suzuki_train.csv",
+      "candidate_pool": "suzuki_test_features.csv"
+    },
+    "Buchwald_sub4": {
+      "directory": "Buchwald_sub4",
+      "metadata": "metadata.json",
+      "options": "options.json",
+      "train": "buchwald_sub4_train.csv",
+      "candidate_pool": "buchwald_sub4_test_features.csv"
+    }
+  }
+}

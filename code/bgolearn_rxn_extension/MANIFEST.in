@@ -1,0 +1,7 @@
+include README.md LICENSE CHANGELOG.md Dockerfile requirements-reference.txt
+recursive-include configs *.yaml
+recursive-include docs *.md
+recursive-include registry_templates *.csv
+recursive-include examples *.py
+recursive-include scripts *.py *.sh
+recursive-include tests *.py

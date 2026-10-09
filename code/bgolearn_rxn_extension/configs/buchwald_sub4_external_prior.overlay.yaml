@@ -1,0 +1,8 @@
+# Start from configs/buchwald_sub4.yaml and make only these external-track changes.
+# Merge manually or use a YAML overlay tool in your experiment manager.
+features:
+  registry_path: ../registry_templates/buchwald_registry.csv
+  missing_registry_policy: error
+policy:
+  prior_initial_weight: 0.45
+  prior_decay: 0.30

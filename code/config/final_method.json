@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "method": "optimized_gp_interaction_gp_warmstart_logei",
+  "source_variant": "gp_interaction_gp_warmstart_logei",
+  "base_configs": {
+    "Buchwald_sub4": "bgolearn_rxn_extension/configs/buchwald_sub4.yaml",
+    "Suzuki": "bgolearn_rxn_extension/configs/suzuki.yaml"
+  },
+  "official_seeds": [
+    100, 200, 300, 400, 500, 600, 700, 800, 900, 1000,
+    1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000
+  ],
+  "budget": 40,
+  "ensemble": {
+    "enabled_models": ["gp", "interaction"],
+    "prequential_weight_updates": true
+  },
+  "policy": {
+    "round_1": "gp_posterior_mean",
+    "rounds_2_to_40": "stable_log_expected_improvement",
+    "query_without_replacement": true
+  },
+  "t95_nonattainment_penalty": 41,
+  "suzuki_product_policy": {
+    "value": "6-(5-methyl-1-(tetrahydro-2H-pyran-2-yl)-1H-indazol-4-yl)quinoline",
+    "role": "fixed_ProductContext",
+    "selectable": false
+  }
+}

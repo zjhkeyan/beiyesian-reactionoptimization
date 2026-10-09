@@ -1,0 +1,9 @@
+dataset,method,metric,direction,n_runs,mean,sample_sd,ci95_low,ci95_high
+Buchwald_sub4,optimized_gp_interaction_gp_warmstart_logei,initial_round_found_best,higher,20,74.97052076,0.0,74.97052076,74.97052076
+Buchwald_sub4,optimized_gp_interaction_gp_warmstart_logei,best_found,higher,20,83.29437838,0.0,83.29437838,83.29437838
+Buchwald_sub4,optimized_gp_interaction_gp_warmstart_logei,round_to_95_global_best,lower,20,26.35,4.029823033857756,24.463984764831743,28.23601523516826
+Buchwald_sub4,optimized_gp_interaction_gp_warmstart_logei,AUC_best_so_far,higher,20,79.0302597315625,0.533761136894656,78.78045182990873,79.28006763321626
+Suzuki,optimized_gp_interaction_gp_warmstart_logei,initial_round_found_best,higher,20,88.35,7.240500128117063,84.96134163035593,91.73865836964406
+Suzuki,optimized_gp_interaction_gp_warmstart_logei,best_found,higher,20,99.8395,0.2705642252774763,99.71287204470829,99.96612795529171
+Suzuki,optimized_gp_interaction_gp_warmstart_logei,round_to_95_global_best,lower,20,5.5,5.735393346764044,2.8157532872294695,8.18424671277053
+Suzuki,optimized_gp_interaction_gp_warmstart_logei,AUC_best_so_far,higher,20,97.1273875,1.1164417969691625,96.60487665508909,97.64989834491091

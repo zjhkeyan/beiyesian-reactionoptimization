@@ -1,0 +1,7 @@
+# Start from configs/suzuki.yaml and make only these external-track changes.
+features:
+  registry_path: ../registry_templates/suzuki_registry.csv
+  missing_registry_policy: error
+policy:
+  prior_initial_weight: 0.35
+  prior_decay: 0.30
